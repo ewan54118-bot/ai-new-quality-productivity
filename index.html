@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page.title">人工智能 · 新质生产力引擎</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ==================== 顶部导航 ==================== -->
+<header class="site-header" id="siteHeader">
+    <div class="header-inner">
+        <div class="logo">
+            <i class="fas fa-brain"></i>
+            <span>AI<span class="logo-accent" data-i18n="logo.accent">·新质生产力</span></span>
+        </div>
+        <nav class="main-nav" id="mainNav">
+            <div class="nav-group-home">
+                <a href="#" class="nav-link active" onclick="navigateTo('home');return false;" data-i18n="nav.home">首页</a>
+                <a href="#" class="nav-link" onclick="navigateTo('industry');return false;" data-i18n="nav.industry">产业规模</a>
+                <a href="#" class="nav-link" onclick="navigateTo('empower');return false;" data-i18n="nav.empower">行业赋能</a>
+                <a href="#" class="nav-link" onclick="navigateTo('efficiency');return false;" data-i18n="nav.efficiency">效率革命</a>
+                <a href="#" class="nav-link" onclick="navigateTo('global');return false;" data-i18n="nav.global">全球格局</a>
+                <a href="#" class="nav-link" onclick="navigateTo('future');return false;" data-i18n="nav.future">未来展望</a>
+            </div>
+            <div class="nav-group-sub" id="navGroupSub" style="display:none;">
+                <button class="sub-nav-btn" id="prevChapterBtn" onclick="navPrev()">
+                    <i class="fas fa-chevron-left"></i> <span class="btn-text" data-i18n="nav.prev">上一章</span>
+                </button>
+                <button class="sub-nav-btn back-home-btn" onclick="navigateTo('home')">
+                    <i class="fas fa-th-large"></i> <span class="btn-text" data-i18n="nav.backHome">返回目录</span>
+                </button>
+                <button class="sub-nav-btn" id="nextChapterBtn" onclick="navNext()">
+                    <span class="btn-text" data-i18n="nav.next">下一章</span> <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </nav>
+        <div class="header-actions">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="lang-toggle" id="langToggle" title="切换语言 / Switch Language">
+                <span class="lang-label" id="langLabel">EN</span>
+            </div>
+            <div class="theme-toggle" id="themeToggle" title="切换主题">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ==================== 视图0：首页目录 ==================== -->
+<div id="view-home" class="page-view active">
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="module-badge">
+                <i class="fas fa-microchip"></i> <span data-i18n="hero.badge">NEW QUALITY PRODUCTIVE FORCES</span>
+            </div>
+            <h1 class="hero-title">
+                <span data-i18n="hero.title1">人工智能</span>
+                <span class="gradient-text" data-i18n="hero.title2">新质生产力引擎</span>
+            </h1>
+            <p class="hero-subtitle" data-i18n="hero.subtitle">
+                从技术突破到产业变革，AI正在重塑经济增长的底层逻辑。<br>
+                以科技创新驱动高质量发展，构建未来竞争新优势。
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">1.2<span class="stat-unit" data-i18n="hero.unit.trillion">万亿</span></span>
+                    <span class="stat-label" data-i18n="hero.stat1.label">2025年核心产业规模</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">35<span class="stat-unit">%</span><span class="stat-unit">+</span></span>
+                    <span class="stat-label" data-i18n="hero.stat2.label">年复合增长率</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">6000<span class="stat-unit">+</span></span>
+                    <span class="stat-label" data-i18n="hero.stat3.label">中国AI企业数量</span>
+                </div>
+            </div>
+            <a href="#directory" class="cta-button" onclick="document.getElementById('directory').scrollIntoView({behavior:'smooth'});return false;">
+                <i class="fas fa-rocket"></i> <span data-i18n="hero.cta">探索数据全景</span>
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"><div class="wheel"></div></div>
+            <span data-i18n="hero.scroll">向下滚动</span>
+        </div>
+    </section>
+
+    <!-- 目录卡片 -->
+    <section class="directory-section" id="directory">
+        <div class="container">
+            <div class="section-header center">
+                <h2 class="section-title" data-i18n="dir.title">数据全景导航</h2>
+                <p class="section-subtitle" data-i18n="dir.subtitle">点击任意卡片，进入对应主题的深度数据可视化与分析</p>
+            </div>
+            <div class="directory-grid">
+                <div class="directory-card" onclick="navigateTo('industry')">
+                    <div class="dir-card-icon" style="background:linear-gradient(135deg,#6B8DD6,#8BA7E8);"><i class="fas fa-chart-line"></i></div>
+                    <div class="dir-card-num">01</div>
+                    <h3 data-i18n="dir.card1.title">中国AI产业规模</h3>
+                    <p data-i18n="dir.card1.desc">从千亿到万亿的爆发式增长，AI核心产业规模与GDP拉动的全维度数据解读。</p>
+                    <span class="dir-card-link"><span data-i18n="dir.enter">进入探索</span> <i class="fas fa-arrow-right"></i></span>
+                </div>
+                <div class="directory-card" onclick="navigateTo('empower')">
+                    <div class="dir-card-icon" style="background:linear-gradient(135deg,#E87461,#F09D8F);"><i class="fas fa-industry"></i></div>
+                    <div class="dir-card-num">02</div>
+                    <h3 data-i18n="dir.card2.title">AI赋能千行百业</h3>
+                    <p data-i18n="dir.card2.desc">智能制造、医疗健康、金融科技、能源电力——AI正在重塑每一个传统行业的价值链。</p>
+                    <span class="dir-card-link"><span data-i18n="dir.enter">进入探索</span> <i class="fas fa-arrow-right"></i></span>
+                </div>
+                <div class="directory-card" onclick="navigateTo('efficiency')">
+                    <div class="dir-card-icon" style="background:linear-gradient(135deg,#6BAF8D,#8CC9A8);"><i class="fas fa-bolt"></i></div>
+                    <div class="dir-card-num">03</div>
+                    <h3 data-i18n="dir.card3.title">AI驱动的效率革命</h3>
+                    <p data-i18n="dir.card3.desc">传统模式VS AI赋能模式的全面对比，用数据量化人工智能带来的生产力跃迁。</p>
+                    <span class="dir-card-link"><span data-i18n="dir.enter">进入探索</span> <i class="fas fa-arrow-right"></i></span>
+                </div>
+                <div class="directory-card" onclick="navigateTo('global')">
+                    <div class="dir-card-icon" style="background:linear-gradient(135deg,#D4A95A,#E4C47E);"><i class="fas fa-globe-asia"></i></div>
+                    <div class="dir-card-num">04</div>
+                    <h3 data-i18n="dir.card4.title">全球AI竞争格局</h3>
+                    <p data-i18n="dir.card4.desc">中美欧三足鼎立，从市场规模、投资结构到人才储备的全球AI竞争力全景扫描。</p>
+                    <span class="dir-card-link"><span data-i18n="dir.enter">进入探索</span> <i class="fas fa-arrow-right"></i></span>
+                </div>
+                <div class="directory-card" onclick="navigateTo('future')">
+                    <div class="dir-card-icon" style="background:linear-gradient(135deg,#9B7ED8,#B99DE8);"><i class="fas fa-eye"></i></div>
+                    <div class="dir-card-num">05</div>
+                    <h3 data-i18n="dir.card5.title">未来展望与里程碑</h3>
+                    <p data-i18n="dir.card5.desc">从2017到2030，AI新质生产力的发展历程与未来路线图，预见智能经济新时代。</p>
+                    <span class="dir-card-link"><span data-i18n="dir.enter">进入探索</span> <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 总结对比（功能强化版） ==================== -->
+    <section class="summary-section" id="summary">
+        <div class="container">
+            <div class="section-header center">
+                <h2 class="section-title" data-i18n="summary.title">AI新质生产力核心数据总览</h2>
+                <p class="section-subtitle"><span data-i18n="summary.subtitle">五大维度量化人工智能的战略价值</span> <span class="header-tip"><i class="fas fa-info-circle"></i> <span data-i18n="summary.tip">点击表格数据可直接跳转至详细分析</span></span></p>
+            </div>
+
+            <!-- 操作工具栏 -->
+            <div class="summary-toolbar">
+                <button class="toolbar-btn" onclick="exportSummaryCSV()">
+                    <i class="fas fa-file-csv"></i> <span data-i18n="summary.export">导出总览数据 (CSV)</span>
+                </button>
+                <button class="toolbar-btn primary" onclick="openRadarModal()">
+                    <i class="fas fa-chart-radar"></i> <span data-i18n="summary.radar">生成战略评估模型</span>
+                </button>
+            </div>
+
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table" id="summaryTable">
+                    <thead>
+                        <tr>
+                            <th data-i18n="summary.th.dimension">评估维度</th>
+                            <th data-target="industry"><i class="fas fa-chart-line"></i> <span data-i18n="nav.industry">产业规模</span></th>
+                            <th data-target="empower"><i class="fas fa-industry"></i> <span data-i18n="nav.empower">行业赋能</span></th>
+                            <th data-target="efficiency"><i class="fas fa-bolt"></i> <span data-i18n="nav.efficiency">效率提升</span></th>
+                            <th data-target="global"><i class="fas fa-globe"></i> <span data-i18n="summary.th.global">全球地位</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong data-i18n="summary.row1.dim">核心指标</strong></td>
+                            <td data-target="industry" data-tip="2025年AI核心产业规模突破万亿大关" data-tip-en="AI core industry scale exceeds 1 trillion in 2025">
+                                <span class="anim-num" data-val="1.2" data-suffix-zh="万亿" data-suffix-en="T">1.2万亿</span><span data-i18n="summary.row1.industry">（2025）</span>
+                            </td>
+                            <td data-target="empower" data-tip="制造业AI场景渗透率超70%" data-tip-en="Manufacturing AI scenario penetration exceeds 70%">
+                                <span class="anim-num" data-val="70" data-suffix-zh="%+" data-suffix-en="%+">70%+</span> <span data-i18n="summary.row1.empower">场景渗透率</span>
+                            </td>
+                            <td data-target="efficiency" data-tip="智能工厂平均生产效率提升" data-tip-en="Average production efficiency improvement in smart factories">
+                                <span class="anim-num" data-val="29" data-suffix-zh="%" data-suffix-en="%">29%</span> <span data-i18n="summary.row1.efficiency">效率提升</span>
+                            </td>
+                            <td data-target="global" data-tip="中国AI综合实力位居世界第二" data-tip-en="China's AI comprehensive strength ranks 2nd globally" data-i18n="summary.row1.global">全球第二</td>
+                        </tr>
+                        <tr>
+                            <td><strong data-i18n="summary.row2.dim">增速表现</strong></td>
+                            <td data-target="industry" data-tip="2024年同比增速达24%" data-tip-en="YoY growth rate reaches 24% in 2024">
+                                <span class="anim-num" data-val="24" data-suffix-zh="%" data-suffix-en="%">24%</span> <span data-i18n="summary.row2.industry">同比</span>
+                            </td>
+                            <td data-target="empower" data-tip="深度覆盖制造、医疗等6大核心行业" data-tip-en="Deep coverage of 6 core industries including manufacturing and healthcare" data-i18n="summary.row2.empower">覆盖6大行业</td>
+                            <td data-target="efficiency" data-tip="AI视觉质检使不良率大幅降低" data-tip-en="AI visual inspection significantly reduces defect rate">
+                                <span class="anim-num" data-val="47" data-suffix-zh="%↓" data-suffix-en="%↓">47%</span> <span data-i18n="summary.row2.efficiency">不良率↓</span>
+                            </td>
+                            <td data-target="global" data-tip="中国占全球AI市场份额约18%" data-tip-en="China accounts for approximately 18% of global AI market">
+                                <span class="anim-num" data-val="18" data-suffix-zh="%" data-suffix-en="%">18%</span> <span data-i18n="summary.row2.global">全球份额</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong data-i18n="summary.row3.dim">2030预期</strong></td>
+                            <td data-target="industry" data-tip="预计2027-2030年突破2万亿" data-tip-en="Expected to exceed 2 trillion by 2027-2030" data-i18n="summary.row3.industry">2万亿+</td>
+                            <td data-target="empower" data-tip="实现全行业全场景的智能化覆盖" data-tip-en="Achieve full-scenario intelligent coverage across all industries" data-i18n="summary.row3.empower">95% 全域覆盖</td>
+                            <td data-target="efficiency" data-tip="实现从研发到供应链的全链路智能化" data-tip-en="Achieve full-chain intelligence from R&D to supply chain" data-i18n="summary.row3.efficiency">全链路智能化</td>
+                            <td data-target="global" data-tip="AI对GDP的额外拉动贡献" data-tip-en="AI's additional contribution to GDP" data-i18n="summary.row3.global">GDP拉动1.0pct</td>
+                        </tr>
+                        <tr>
+                            <td><strong data-i18n="summary.row4.dim">战略评级</strong></td>
+                            <td data-target="industry"><span class="rating" data-score="5">⭐⭐⭐⭐⭐</span></td>
+                            <td data-target="empower"><span class="rating" data-score="5">⭐⭐⭐⭐⭐</span></td>
+                            <td data-target="efficiency"><span class="rating" data-score="5">⭐⭐⭐⭐⭐</span></td>
+                            <td data-target="global"><span class="rating" data-score="4">⭐⭐⭐⭐</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="best-practices">
+                <h3><i class="fas fa-trophy"></i> <span data-i18n="summary.conclusion.title">核心结论</span> <span class="header-tip" style="font-size:0.8rem;font-weight:400;color:var(--text-muted);margin-left:10px;" data-i18n="summary.conclusion.tip">点击卡片查看深度解析</span></h3>
+                <div class="practices-grid">
+                    <div class="practice-card" onclick="navigateTo('industry')">
+                        <div class="practice-icon" style="background:linear-gradient(135deg,#6B8DD6,#8BA7E8);"><i class="fas fa-rocket"></i></div>
+                        <h4 data-i18n="summary.p1.title">经济增长新引擎</h4>
+                        <p data-i18n="summary.p1.desc">AI核心产业规模突破万亿，2030年对GDP拉动超1个百分点</p>
+                        <span class="practice-link"><span data-i18n="summary.p1.link">查看产业数据</span> <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                    <div class="practice-card" onclick="navigateTo('empower')">
+                        <div class="practice-icon" style="background:linear-gradient(135deg,#E87461,#F09D8F);"><i class="fas fa-cogs"></i></div>
+                        <h4 data-i18n="summary.p2.title">产业升级加速器</h4>
+                        <p data-i18n="summary.p2.desc">深度渗透制造、医疗、金融、能源等核心行业，重塑价值链</p>
+                        <span class="practice-link"><span data-i18n="summary.p2.link">查看赋能案例</span> <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                    <div class="practice-card" onclick="navigateTo('efficiency')">
+                        <div class="practice-icon" style="background:linear-gradient(135deg,#6BAF8D,#8CC9A8);"><i class="fas fa-chart-bar"></i></div>
+                        <h4 data-i18n="summary.p3.title">效率革命催化剂</h4>
+                        <p data-i18n="summary.p3.desc">生产周期缩短58%，质检准确率提升至99.5%，响应时间趋近于零</p>
+                        <span class="practice-link"><span data-i18n="summary.p3.link">查看效率对比</span> <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                    <div class="practice-card" onclick="navigateTo('global')">
+                        <div class="practice-icon" style="background:linear-gradient(135deg,#9B7ED8,#B99DE8);"><i class="fas fa-globe"></i></div>
+                        <h4 data-i18n="summary.p4.title">国际竞争新高地</h4>
+                        <p data-i18n="summary.p4.desc">中国AI综合实力全球第二，大模型数量与企业规模持续领跑</p>
+                        <span class="practice-link"><span data-i18n="summary.p4.link">查看全球格局</span> <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ==================== 评估模型弹窗 ==================== -->
+<div class="modal-overlay" id="radarModal">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h3><i class="fas fa-chart-radar"></i> <span data-i18n="modal.title">AI新质生产力战略价值评估模型</span></h3>
+            <button class="modal-close" onclick="closeRadarModal()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <p class="modal-desc" data-i18n="modal.desc">基于产业规模、行业赋能、效率提升、全球地位与未来潜力五个维度，综合计算AI作为新质生产力的战略价值指数。</p>
+            <div id="modalRadarChart" style="width:100%;height:400px;"></div>
+            <div class="modal-stats">
+                <div class="modal-stat-item">
+                    <div class="modal-stat-label" data-i18n="modal.stat1.label">综合战略指数</div>
+                    <div class="modal-stat-value" id="radarTotalScore">0</div>
+                </div>
+                <div class="modal-stat-item">
+                    <div class="modal-stat-label" data-i18n="modal.stat2.label">最高维度</div>
+                    <div class="modal-stat-value" style="font-size:1.2rem;color:var(--coral);" data-i18n="modal.stat2.value">产业规模 / 效率提升</div>
+                </div>
+                <div class="modal-stat-item">
+                    <div class="modal-stat-label" data-i18n="modal.stat3.label">评估结论</div>
+                    <div class="modal-stat-value" style="font-size:1rem;color:var(--green);" data-i18n="modal.stat3.value">核心战略引擎</div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="toolbar-btn" onclick="downloadRadarImage()"><i class="fas fa-download"></i> <span data-i18n="modal.save">保存评估图片</span></button>
+            <button class="toolbar-btn primary" onclick="closeRadarModal()" data-i18n="modal.close">关闭</button>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 视图1：中国AI产业规模 ==================== -->
+<div id="view-industry" class="page-view">
+    <section class="module-section" id="industry">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" data-i18n="s1.title">中国AI产业规模</h2>
+                    <p class="section-subtitle" data-i18n="s1.subtitle">从千亿到万亿的爆发式增长，数据驱动的宏观全景</p>
+                </div>
+                <div class="section-icon" style="--accent:#6B8DD6;"><i class="fas fa-chart-line"></i></div>
+            </div>
+
+            <div class="section-tabs">
+                <button class="tab-btn active" data-tab="concept"><i class="fas fa-lightbulb"></i> <span data-i18n="tab.core">核心数据</span></button>
+                <button class="tab-btn" data-tab="viz"><i class="fas fa-chart-pie"></i> <span data-i18n="tab.viz">数据可视化与交互</span></button>
+                <button class="tab-btn" data-tab="source"><i class="fas fa-book-open"></i> <span data-i18n="tab.source">数据来源</span></button>
+            </div>
+
+            <div class="tab-panel active" data-panel="concept">
+                <div class="knowledge-card">
+                    <div class="knowledge-header"><i class="fas fa-lightbulb"></i><h3 data-i18n="s1.core.title">核心数据解读</h3></div>
+                    <div class="knowledge-body"><div class="knowledge-grid">
+                        <div class="knowledge-item"><h4><i class="fas fa-fire"></i> <span data-i18n="s1.k1.title">产业规模爆发</span></h4><p data-i18n="s1.k1.desc">2025年中国AI核心产业规模突破<strong>1.2万亿元</strong>，同比增长<strong>24%</strong>。从2019年的1200亿元到2025年的12000亿元，6年增长<strong>10倍</strong>，展现了新质生产力的指数级增长特征。</p></div>
+                        <div class="knowledge-item"><h4><i class="fas fa-chart-area"></i> <span data-i18n="s1.k2.title">GDP拉动效应</span></h4><p data-i18n="s1.k2.desc">AI对GDP的拉动效应逐年递增。2025年贡献<strong>0.35个百分点</strong>，预计2030年将达到<strong>1.0个百分点</strong>，成为经济增长的核心驱动力。这意味着AI每年为中国GDP额外创造超<strong>1300亿元</strong>的增量。</p></div>
+                        <div class="knowledge-item"><h4><i class="fas fa-building"></i> <span data-i18n="s1.k3.title">企业生态繁荣</span></h4><p data-i18n="s1.k3.desc">中国AI企业数量超过<strong>6000家</strong>，占全球AI企业总数的<strong>15%</strong>。其中上市公司超<strong>300家</strong>，独角兽企业超<strong>100家</strong>，形成了从基础研究到应用落地的完整产业链。</p></div>
+                        <div class="knowledge-item"><h4><i class="fas fa-server"></i> <span data-i18n="s1.k4.title">算力基础设施</span></h4><p data-i18n="s1.k4.desc">全国智能算力规模达到<strong>782 EFLOPS</strong>（每秒百亿亿次浮点运算），建成<strong>9000+</strong>座先进级智能工厂，AI芯片国产化率提升至<strong>25%</strong>，算力底座日趋完善。</p></div>
+                        <div class="knowledge-item"><h4><i class="fas fa-brain"></i> <span data-i18n="s1.k5.title">大模型井喷</span></h4><p data-i18n="s1.k5.desc">中国已发布大模型数量超过<strong>1300个</strong>，涵盖语言、视觉、多模态等方向。2024年新增注册大模型<strong>500+</strong>，形成了"百模大战"的繁荣生态，为产业应用提供了丰富的技术供给。</p></div>
+                        <div class="knowledge-item"><h4><i class="fas fa-users"></i> <span data-i18n="s1.k6.title">人才储备</span></h4><p data-i18n="s1.k6.desc">中国AI相关从业人员超过<strong>120万人</strong>，高校AI专业招生规模年增<strong>30%</strong>。但高端人才缺口仍达<strong>50万</strong>，顶尖科学家供不应求，人才培养体系正在加速完善。</p></div>
+                    </div></div>
+                </div>
+            </div>
+
+            <div class="tab-panel" data-panel="viz">
+                <div class="case-study-card" style="--case-accent:#6B8DD6;">
+                    <div class="case-header"><div class="case-icon"><i class="fas fa-chart-bar"></i></div><div><h3 data-i18n="s1.viz.title">中国AI产业增长全景可视化</h3><p data-i18n="s1.viz.subtitle">多维度图表展现AI核心产业规模、GDP拉动效应与投资结构的演变趋势</p></div></div>
+                    <div class="case-body">
+                        <div class="chart-grid-2">
+                            <div class="chart-card-vis"><h4 class="vis-title" data-i18n="s1.chart1.title">中国AI核心产业规模（亿元）</h4><div id="chart-industry-scale" class="echart-box"></div></div>
+                            <div class="chart-card-vis"><h4 class="vis-title" data-i18n="s1.chart2.title">AI对GDP增速的拉动（百分点）</h4><div id="chart-gdp-pull" class="echart-box"></div></div>
+                        </div>
+                        <div class="chart-grid-2" style="margin-top:24px;">
+                            <div class="chart-card-vis"><h4 class="vis-title" data-i18n="s1.chart3.title">AI产业投资结构（2025年）</h4><div id="chart-invest-structure" class="echart-box"></div></div>
+                            <div class="chart-card-vis"><h4 class="vis-title" data-i18n="s1.chart4.title">大模型数量增长趋势</h4><div id="chart-model-growth" class="echart-box"></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="demo-section">
+                    <div class="demo-header"><i class="fas fa-play-circle"></i><h3 data-i18n="s1.demo.title">交互式数据探索</h3></div>
+                    <div class="demo-card">
+                        <h4 class="demo-title"><span class="demo-badge" data-i18n="demo.badge1">演示 1</span> <span data-i18n="s1.demo1.title">产业规模增长模拟器</span></h4>
+                        <div class="demo-controls"><label data-i18n="s1.demo1.label">选择年份：</label><div class="btn-group">
+                            <button class="demo-btn" onclick="updateScaleDemo(2019,this)">2019</button><button class="demo-btn" onclick="updateScaleDemo(2021,this)">2021</button><button class="demo-btn" onclick="updateScaleDemo(2023,this)">2023</button><button class="demo-btn active" onclick="updateScaleDemo(2025,this)">2025</button><button class="demo-btn" onclick="updateScaleDemo(2027,this)">2027(E)</button>
+                        </div></div>
+                        <div class="demo-area" id="scale-demo" style="padding:30px;text-align:center;">
+                            <div class="scale-bar-container"><div class="scale-bar" id="scaleBar" style="width:60%;"><span class="scale-value" id="scaleValue">12,000亿元</span></div></div>
+                            <div class="scale-label" id="scaleLabel"><div class="scale-year">2025年</div><div class="scale-detail">核心产业规模突破万亿大关，同比增长24%</div></div>
+                        </div>
+                        <div class="demo-output"><code id="scale-demo-code">2025年: 12,000亿元 | 占GDP约0.9% | 同比增长24%</code></div>
+                    </div>
+                    <div class="demo-card">
+                        <h4 class="demo-title"><span class="demo-badge" data-i18n="demo.badge2">演示 2</span> <span data-i18n="s1.demo2.title">AI企业数量与企业类型分布</span></h4>
+                        <div class="demo-controls"><label data-i18n="s1.demo2.label">企业类型：</label><div class="btn-group">
+                            <button class="demo-btn active" onclick="showEnterpriseType('all',this)" data-i18n="s1.demo2.all">全部</button><button class="demo-btn" onclick="showEnterpriseType('listed',this)" data-i18n="s1.demo2.listed">上市公司</button><button class="demo-btn" onclick="showEnterpriseType('unicorn',this)" data-i18n="s1.demo2.unicorn">独角兽</button><button class="demo-btn" onclick="showEnterpriseType('startup',this)" data-i18n="s1.demo2.startup">初创企业</button>
+                        </div></div>
+                        <div class="demo-area" style="padding:20px;"><div id="enterpriseChart" class="echart-box" style="height:300px;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-panel" data-panel="source">
+                <div class="source-section">
+                    <div class="source-intro"><i class="fas fa-info-circle"></i><p data-i18n="source.intro1">本章节所有数据均来自国内外权威研究机构与政府主管部门公开发布的报告与统计公报，确保数据的准确性与时效性。以下为详细数据溯源信息。</p></div>
+                    <div class="source-cards-grid">
+                        <div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#6B8DD6,#8BA7E8);"><i class="fas fa-landmark"></i></div><h4 data-i18n="s1.src1.name">中国信息通信研究院</h4><p class="source-org-en">CAICT</p><ul class="source-list"><li data-i18n="s1.src1.item1">《人工智能白皮书（2025年）》</li><li data-i18n="s1.src1.item2">《全球人工智能战略与政策观察》</li><li data-i18n="s1.src1.item3">AI核心产业规模、算力基础设施数据</li></ul></div>
+                        <div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#E87461,#F09D8F);"><i class="fas fa-industry"></i></div><h4 data-i18n="s1.src2.name">工业和信息化部</h4><p class="source-org-en">MIIT</p><ul class="source-list"><li data-i18n="s1.src2.item1">《智能制造发展年度报告》</li><li data-i18n="s1.src2.item2">"人工智能+"行动计划</li><li data-i18n="s1.src2.item3">智能工厂数量、企业统计数据</li></ul></div>
+                        <div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#6BAF8D,#8CC9A8);"><i class="fas fa-university"></i></div><h4 data-i18n="s1.src3.name">中央财经大学</h4><p class="source-org-en">CUFE AI Research Institute</p><ul class="source-list"><li data-i18n="s1.src3.item1">《AI对GDP拉动效应测算报告》</li><li data-i18n="s1.src3.item2">人工智能与宏观经济研究</li><li data-i18n="s1.src3.item3">GDP拉动效应预测数据</li></ul></div>
+                        <div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#D4A95A,#E4C47E);"><i class="fas fa-database"></i></div><h4>IDC / TrendForce</h4><p class="source-org-en">International Data Corporation</p><ul class="source-list"><li data-i18n="s1.src4.item1">全球AI市场规模追踪报告</li><li data-i18n="s1.src4.item2">AI芯片市场份额分析</li><li data-i18n="s1.src4.item3">智能算力、芯片国产化数据</li></ul></div>
+                    </div>
+                    <div class="source-table-wrapper"><h4><i class="fas fa-table"></i> <span data-i18n="source.table.title">关键数据引用明细</span></h4><table class="source-table"><thead><tr><th data-i18n="source.th.indicator">数据指标</th><th data-i18n="source.th.value">数值</th><th data-i18n="source.th.source">数据来源</th><th data-i18n="source.th.time">发布时间</th></tr></thead><tbody>
+                        <tr><td data-i18n="s1.st1.ind">AI核心产业规模（2025）</td><td data-i18n="s1.st1.val">1.2万亿元</td><td data-i18n="s1.st1.src">中国信通院</td><td>2025.Q1</td></tr>
+                        <tr><td data-i18n="s1.st2.ind">AI核心产业同比增速</td><td>24%</td><td data-i18n="s1.st2.src">中国信通院</td><td>2025.Q1</td></tr>
+                        <tr><td data-i18n="s1.st3.ind">GDP拉动效应（2025）</td><td>0.35 pct</td><td data-i18n="s1.st3.src">中央财经大学</td><td>2024.12</td></tr>
+                        <tr><td data-i18n="s1.st4.ind">GDP拉动效应（2030E）</td><td>1.0 pct</td><td data-i18n="s1.st4.src">中央财经大学</td><td>2024.12</td></tr>
+                        <tr><td data-i18n="s1.st5.ind">AI企业总数</td><td data-i18n="s1.st5.val">6,000+家</td><td data-i18n="s1.st5.src">工信部/天眼查</td><td>2025.Q1</td></tr>
+                        <tr><td data-i18n="s1.st6.ind">智能算力规模</td><td>782 EFLOPS</td><td data-i18n="s1.st6.src">中国信通院/IDC</td><td>2024.12</td></tr>
+                        <tr><td data-i18n="s1.st7.ind">大模型数量</td><td data-i18n="s1.st7.val">1,300+个</td><td data-i18n="s1.st7.src">中国信通院</td><td>2025.Q1</td></tr>
+                        <tr><td data-i18n="s1.st8.ind">AI从业人员</td><td data-i18n="s1.st8.val">120万+人</td><td data-i18n="s1.st8.src">工信部</td><td>2024.12</td></tr>
+                        <tr><td data-i18n="s1.st9.ind">先进级智能工厂</td><td data-i18n="s1.st9.val">9,000+座</td><td data-i18n="s1.st9.src">工信部</td><td>2025.Q1</td></tr>
+                        <tr><td data-i18n="s1.st10.ind">AI芯片国产化率</td><td>25%</td><td>TrendForce</td><td>2024.Q4</td></tr>
+                    </tbody></table></div>
+                    <div class="source-note"><i class="fas fa-exclamation-triangle"></i><span data-i18n="source.note1">注：标注"(E)"的数据为基于现有趋势的预测值，实际数据可能因市场环境变化而有所调整。所有数据截至2025年第一季度。</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ==================== 视图2：AI赋能千行百业 ==================== -->
+<div id="view-empower" class="page-view">
+    <section class="module-section section-alt" id="empower">
+        <div class="container">
+            <div class="section-header"><div class="section-number">02</div><div class="section-title-group"><h2 class="section-title" data-i18n="s2.title">AI赋能千行百业</h2><p class="section-subtitle" data-i18n="s2.subtitle">深度渗透六大核心行业，重塑产业价值链</p></div><div class="section-icon" style="--accent:#E87461;"><i class="fas fa-industry"></i></div></div>
+            <div class="section-tabs"><button class="tab-btn active" data-tab="concept"><i class="fas fa-lightbulb"></i> <span data-i18n="tab.core">核心数据</span></button><button class="tab-btn" data-tab="viz"><i class="fas fa-chart-pie"></i> <span data-i18n="tab.viz">数据可视化与交互</span></button><button class="tab-btn" data-tab="source"><i class="fas fa-book-open"></i> <span data-i18n="tab.source">数据来源</span></button></div>
+            <div class="tab-panel active" data-panel="concept"><div class="knowledge-card"><div class="knowledge-header"><i class="fas fa-lightbulb"></i><h3 data-i18n="s2.core.title">行业赋能数据解读</h3></div><div class="knowledge-body"><div class="knowledge-grid">
+                <div class="knowledge-item"><h4><i class="fas fa-cogs"></i> <span data-i18n="s2.k1.title">智能制造</span></h4><p data-i18n="s2.k1.desc">AI渗透<strong>70%+</strong>制造业业务场景，智能工厂平均生产效率提升<strong>29%</strong>，产品不良率降低<strong>47%</strong>。已建成<strong>9000+</strong>座先进级智能工厂，覆盖汽车、电子、钢铁等核心行业。</p></div>
+                <div class="knowledge-item"><h4><i class="fas fa-heartbeat"></i> <span data-i18n="s2.k2.title">医疗健康</span></h4><p data-i18n="s2.k2.desc">AI辅助诊断准确率达<strong>95%+</strong>，药物研发周期缩短<strong>40%</strong>。医疗影像AI已覆盖<strong>80%</strong>的三甲医院，年均处理影像数据超<strong>10亿</strong>例，极大提升了医疗资源的可及性。</p></div>
+                <div class="knowledge-item"><h4><i class="fas fa-university"></i> <span data-i18n="s2.k3.title">金融科技</span></h4><p data-i18n="s2.k3.desc">AI风控模型将欺诈识别准确率提升至<strong>99.2%</strong>，智能客服处理<strong>85%</strong>的客户咨询，量化交易策略年化收益率提升<strong>15-25%</strong>。金融是AI渗透率最高的服务业。</p></div>
+                <div class="knowledge-item"><h4><i class="fas fa-car"></i> <span data-i18n="s2.k4.title">智能交通</span></h4><p data-i18n="s2.k4.desc">L4级自动驾驶路测里程突破<strong>1亿公里</strong>，智能交通系统使城市拥堵率降低<strong>20%</strong>。车路协同技术覆盖<strong>30+</strong>个城市，自动驾驶出租车已在<strong>10+</strong>城市商业运营。</p></div>
+                <div class="knowledge-item"><h4><i class="fas fa-bolt"></i> <span data-i18n="s2.k5.title">能源电力</span></h4><p data-i18n="s2.k5.desc">AI优化电网调度效率提升<strong>35%</strong>，新能源发电预测准确率达<strong>92%</strong>。智能巡检机器人覆盖<strong>60%</strong>的高压输电线路，年均减少碳排放超<strong>5000万吨</strong>。</p></div>
+                <div class="knowledge-item"><h4><i class="fas fa-graduation-cap"></i> <span data-i18n="s2.k6.title">智慧教育</span></h4><p data-i18n="s2.k6.desc">AI个性化学习系统覆盖<strong>5万+</strong>所学校，学生成绩平均提升<strong>18%</strong>。智能评测系统处理<strong>3亿+</strong>份试卷/年，AI教师助手在偏远地区弥补了<strong>40%</strong>的师资缺口。</p></div>
+            </div></div></div></div>
+            <div class="tab-panel" data-panel="viz"><div class="case-study-card" style="--case-accent:#E87461;"><div class="case-header"><div class="case-icon"><i class="fas fa-chart-radar"></i></div><div><h3 data-i18n="s2.viz.title">行业赋能能力全景可视化</h3><p data-i18n="s2.viz.subtitle">雷达图与分布图展现AI在各行业的渗透深度与赋能效果</p></div></div><div class="case-body"><div class="chart-grid-2"><div class="chart-card-vis"><h4 class="vis-title" data-i18n="s2.chart1.title">AI行业赋能能力雷达图</h4><div id="chart-radar" class="echart-box"></div></div><div class="chart-card-vis"><h4 class="vis-title" data-i18n="s2.chart2.title">大模型行业应用分布</h4><div id="chart-industry-pie" class="echart-box"></div></div></div><div class="industry-cards-row"><div class="industry-mini-card"><div class="imc-icon">🏭</div><div class="imc-data"><strong>70%+</strong><span data-i18n="s2.mini1">场景渗透率</span></div></div><div class="industry-mini-card"><div class="imc-icon">🏥</div><div class="imc-data"><strong>95%+</strong><span data-i18n="s2.mini2">诊断准确率</span></div></div><div class="industry-mini-card"><div class="imc-icon">💰</div><div class="imc-data"><strong>99.2%</strong><span data-i18n="s2.mini3">风控准确率</span></div></div><div class="industry-mini-card"><div class="imc-icon">🚗</div><div class="imc-data"><strong>1亿km</strong><span data-i18n="s2.mini4">路测里程</span></div></div><div class="industry-mini-card"><div class="imc-icon">⚡</div><div class="imc-data"><strong>92%</strong><span data-i18n="s2.mini5">发电预测</span></div></div><div class="industry-mini-card"><div class="imc-icon">🎓</div><div class="imc-data"><strong>5万+</strong><span data-i18n="s2.mini6">覆盖学校</span></div></div></div></div></div>
+            <div class="demo-section"><div class="demo-header"><i class="fas fa-play-circle"></i><h3 data-i18n="s2.demo.title">交互式行业对比</h3></div><div class="demo-card"><h4 class="demo-title"><span class="demo-badge green" data-i18n="demo.badgeGreen">演示</span> <span data-i18n="s2.demo1.title">行业AI赋能效果对比</span></h4><div class="demo-controls"><label data-i18n="s2.demo1.label">对比维度：</label><div class="btn-group"><button class="demo-btn active" onclick="switchEmpowerDim('penetration',this)" data-i18n="s2.dim.penetration">渗透率</button><button class="demo-btn" onclick="switchEmpowerDim('efficiency',this)" data-i18n="s2.dim.efficiency">效率提升</button><button class="demo-btn" onclick="switchEmpowerDim('investment',this)" data-i18n="s2.dim.investment">投资规模</button></div></div><div class="demo-area" style="padding:20px;"><div id="chart-empower-compare" class="echart-box" style="height:350px;"></div></div></div></div></div>
+            <div class="tab-panel" data-panel="source"><div class="source-section"><div class="source-intro"><i class="fas fa-info-circle"></i><p data-i18n="source.intro2">行业赋能数据综合自多个行业主管部门与研究机构的专项报告，覆盖制造、医疗、金融、交通、能源、教育六大核心领域。</p></div><div class="source-cards-grid"><div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#E87461,#F09D8F);"><i class="fas fa-cogs"></i></div><h4 data-i18n="s2.src1.name">工信部</h4><p class="source-org-en" data-i18n="s2.src1.en">智能制造发展报告</p><ul class="source-list"><li data-i18n="s2.src1.item1">场景渗透率、效率提升数据</li><li data-i18n="s2.src1.item2">智能工厂建设统计</li></ul></div><div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#6BAF8D,#8CC9A8);"><i class="fas fa-heartbeat"></i></div><h4 data-i18n="s2.src2.name">国家卫健委 / 动脉网</h4><p class="source-org-en" data-i18n="s2.src2.en">医疗AI专项调研</p><ul class="source-list"><li data-i18n="s2.src2.item1">辅助诊断准确率</li><li data-i18n="s2.src2.item2">三甲医院AI覆盖率</li></ul></div><div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#D4A95A,#E4C47E);"><i class="fas fa-university"></i></div><h4 data-i18n="s2.src3.name">中国金融科技发展报告</h4><p class="source-org-en" data-i18n="s2.src3.en">央行科技司</p><ul class="source-list"><li data-i18n="s2.src3.item1">风控准确率、智能客服占比</li><li data-i18n="s2.src3.item2">量化交易收益数据</li></ul></div><div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#9B7ED8,#B99DE8);"><i class="fas fa-car"></i></div><h4 data-i18n="s2.src4.name">交通运输部 / 百度Apollo</h4><p class="source-org-en" data-i18n="s2.src4.en">智能交通白皮书</p><ul class="source-list"><li data-i18n="s2.src4.item1">L4路测里程、拥堵降低率</li><li data-i18n="s2.src4.item2">车路协同城市覆盖数据</li></ul></div></div>
+            <div class="source-table-wrapper"><h4><i class="fas fa-table"></i> <span data-i18n="source.table.title">关键数据引用明细</span></h4><table class="source-table"><thead><tr><th data-i18n="source.th.indicator">数据指标</th><th data-i18n="source.th.value">数值</th><th data-i18n="source.th.source">数据来源</th><th data-i18n="source.th.time">发布时间</th></tr></thead><tbody>
+                <tr><td data-i18n="s2.st1.ind">制造业AI场景渗透率</td><td>70%+</td><td data-i18n="s2.st1.src">工信部</td><td>2025.Q1</td></tr>
+                <tr><td data-i18n="s2.st2.ind">智能工厂效率提升</td><td>29%</td><td data-i18n="s2.st2.src">工信部</td><td>2025.Q1</td></tr>
+                <tr><td data-i18n="s2.st3.ind">产品不良率降低</td><td>47%</td><td data-i18n="s2.st3.src">工信部</td><td>2025.Q1</td></tr>
+                <tr><td data-i18n="s2.st4.ind">AI辅助诊断准确率</td><td>95%+</td><td data-i18n="s2.st4.src">国家卫健委</td><td>2024.12</td></tr>
+                <tr><td data-i18n="s2.st5.ind">药物研发周期缩短</td><td>40%</td><td data-i18n="s2.st5.src">动脉网</td><td>2024.12</td></tr>
+                <tr><td data-i18n="s2.st6.ind">金融风控准确率</td><td>99.2%</td><td data-i18n="s2.st6.src">金融科技报告</td><td>2024.12</td></tr>
+                <tr><td data-i18n="s2.st7.ind">L4自动驾驶路测里程</td><td data-i18n="s2.st7.val">1亿+公里</td><td data-i18n="s2.st7.src">交通运输部</td><td>2025.Q1</td></tr>
+                <tr><td data-i18n="s2.st8.ind">新能源发电预测准确率</td><td>92%</td><td data-i18n="s2.st8.src">国家能源局</td><td>2024.12</td></tr>
+                <tr><td data-i18n="s2.st9.ind">AI教育覆盖学校数</td><td data-i18n="s2.st9.val">5万+所</td><td data-i18n="s2.st9.src">教育部</td><td>2024.12</td></tr>
+                <tr><td data-i18n="s2.st10.ind">大模型行业应用分布</td><td data-i18n="s2.st10.val">详见图表</td><td data-i18n="s2.st10.src">中国信通院</td><td>2025.Q1</td></tr>
+            </tbody></table></div><div class="source-note"><i class="fas fa-exclamation-triangle"></i><span data-i18n="source.note2">注：行业数据因统计口径差异可能存在出入，本展示采用各权威来源的最新公开数据。所有数据截至2025年第一季度。</span></div></div></div>
+        </div>
+    </section>
+</div>
+
+<!-- ==================== 视图3：效率革命 ==================== -->
+<div id="view-efficiency" class="page-view">
+    <section class="module-section" id="efficiency">
+        <div class="container">
+            <div class="section-header"><div class="section-number">03</div><div class="section-title-group"><h2 class="section-title" data-i18n="s3.title">AI驱动的效率革命</h2><p class="section-subtitle" data-i18n="s3.subtitle">传统模式VS AI赋能模式——用数据量化生产力跃迁</p></div><div class="section-icon" style="--accent:#6BAF8D;"><i class="fas fa-bolt"></i></div></div>
+            <div class="section-tabs"><button class="tab-btn active" data-tab="concept"><i class="fas fa-lightbulb"></i> <span data-i18n="tab.core">核心数据</span></button><button class="tab-btn" data-tab="viz"><i class="fas fa-chart-pie"></i> <span data-i18n="tab.viz">数据可视化与交互</span></button><button class="tab-btn" data-tab="source"><i class="fas fa-book-open"></i> <span data-i18n="tab.source">数据来源</span></button></div>
+            <div class="tab-panel active" data-panel="concept"><div class="knowledge-card"><div class="knowledge-header"><i class="fas fa-lightbulb"></i><h3 data-i18n="s3.core.title">效率革命数据解读</h3></div><div class="knowledge-body"><div class="knowledge-grid">
+                <div class="knowledge-item"><h4><i class="fas fa-clock"></i> <span data-i18n="s3.k1.title">产品研发周期</span></h4><p data-i18n="s3.k1.desc">传统模式下产品研发平均需要<strong>12个月</strong>，AI赋能后缩短至<strong>5个月</strong>，降幅达<strong>58%</strong>。AI辅助设计、仿真测试、代码生成大幅加速了从概念到产品的全流程。</p></div>
+                <div class="knowledge-item"><h4><i class="fas fa-search"></i> <span data-i18n="s3.k2.title">质量检测准确率</span></h4><p data-i18n="s3.k2.desc">人工质检准确率约<strong>92%</strong>，AI视觉质检提升至<strong>99.5%</strong>。每秒可处理<strong>200+</strong>张产品图片，实现7×24小时无间断检测，每年为企业节省数百万人工成本。</p></div>
+                <div class="knowledge-item"><h4><i class="fas fa-headset"></i> <span data-i18n="s3.k3.title">客户服务响应</span></h4><p data-i18n="s3.k3.desc">传统客服平均响应<strong>4小时</strong>，AI智能客服实现<strong>即时响应</strong>（<1秒），处理效率提升<strong>99%</strong>。同时客户满意度反而提升<strong>12%</strong>，因为AI可以提供24小时一致的服务质量。</p></div>
+                <div class="knowledge-item"><h4><i class="fas fa-leaf"></i> <span data-i18n="s3.k4.title">能源消耗效率</span></h4><p data-i18n="s3.k4.desc">传统工厂能源利用率约<strong>65%</strong>，AI优化后提升至<strong>92%</strong>，效率提升<strong>42%</strong>。智能能源管理系统实时调控设备运行参数，年均减少碳排放<strong>30%</strong>以上。</p></div>
+                <div class="knowledge-item"><h4><i class="fas fa-truck"></i> <span data-i18n="s3.k5.title">供应链预测</span></h4><p data-i18n="s3.k5.desc">传统供应链预测精度约<strong>60%</strong>，AI预测提升至<strong>95%</strong>，库存周转率提升<strong>35%</strong>，缺货率降低<strong>65%</strong>。这直接转化为数百亿级别的资金效率提升。</p></div>
+                <div class="knowledge-item"><h4><i class="fas fa-file-alt"></i> <span data-i18n="s3.k6.title">文档处理效率</span></h4><p data-i18n="s3.k6.desc">传统人工处理合同/文档平均<strong>2小时/份</strong>，AI文档处理仅需<strong>30秒/份</strong>，效率提升<strong>240倍</strong>。法律AI可在<strong>26秒</strong>内完成人类需要<strong>92小时</strong>的合同审查工作。</p></div>
+            </div></div></div></div>
+            <div class="tab-panel" data-panel="viz"><div class="case-study-card" style="--case-accent:#6BAF8D;"><div class="case-header"><div class="case-icon"><i class="fas fa-exchange-alt"></i></div><div><h3 data-i18n="s3.viz.title">传统模式 VS AI赋能模式</h3><p data-i18n="s3.viz.subtitle">五大核心效率指标的对比可视化</p></div></div><div class="case-body"><div class="comparison-container"><div class="comparison-header"><div class="comparison-label" data-i18n="s3.comp.traditional">传统模式</div><div class="comparison-vs">VS</div><div class="comparison-label" data-i18n="s3.comp.ai">AI赋能模式</div></div><div class="comparison-bars">
+                <div class="comparison-item"><span class="comp-name" data-i18n="s3.comp1.name">产品研发周期</span><div class="comp-bar-group"><div class="comp-bar traditional" data-width="85"><span class="comp-value" data-i18n="s3.comp1.trad">12个月</span></div><div class="comp-bar ai-enhanced" data-width="40"><span class="comp-value" data-i18n="s3.comp1.ai">5个月</span></div></div><span class="comp-improvement">↓ 58%</span></div>
+                <div class="comparison-item"><span class="comp-name" data-i18n="s3.comp2.name">质检准确率</span><div class="comp-bar-group"><div class="comp-bar traditional" data-width="70"><span class="comp-value">92%</span></div><div class="comp-bar ai-enhanced" data-width="95"><span class="comp-value">99.5%</span></div></div><span class="comp-improvement">↑ 8%</span></div>
+                <div class="comparison-item"><span class="comp-name" data-i18n="s3.comp3.name">客服响应</span><div class="comp-bar-group"><div class="comp-bar traditional" data-width="80"><span class="comp-value" data-i18n="s3.comp3.trad">4小时</span></div><div class="comp-bar ai-enhanced" data-width="15"><span class="comp-value" data-i18n="s3.comp3.ai">即时</span></div></div><span class="comp-improvement">↓ 99%</span></div>
+                <div class="comparison-item"><span class="comp-name" data-i18n="s3.comp4.name">能源利用率</span><div class="comp-bar-group"><div class="comp-bar traditional" data-width="55"><span class="comp-value">65%</span></div><div class="comp-bar ai-enhanced" data-width="88"><span class="comp-value">92%</span></div></div><span class="comp-improvement">↑ 42%</span></div>
+                <div class="comparison-item"><span class="comp-name" data-i18n="s3.comp5.name">供应链预测</span><div class="comp-bar-group"><div class="comp-bar traditional" data-width="50"><span class="comp-value">60%</span></div><div class="comp-bar ai-enhanced" data-width="90"><span class="comp-value">95%</span></div></div><span class="comp-improvement">↑ 58%</span></div>
+            </div></div><div class="chart-grid-2" style="margin-top:32px;"><div class="chart-card-vis"><h4 class="vis-title" data-i18n="s3.chart1.title">生成式AI市场规模（亿美元）</h4><div id="chart-genai" class="echart-box"></div></div><div class="chart-card-vis"><h4 class="vis-title" data-i18n="s3.chart2.title">AI效率提升综合指数</h4><div id="chart-efficiency-index" class="echart-box"></div></div></div></div></div>
+            <div class="demo-section"><div class="demo-header"><i class="fas fa-play-circle"></i><h3 data-i18n="s3.demo.title">效率提升计算器</h3></div><div class="demo-card"><h4 class="demo-title"><span class="demo-badge green" data-i18n="demo.badgeGreen">演示</span> <span data-i18n="s3.demo1.title">AI效率提升模拟计算器</span></h4><div class="demo-controls"><label data-i18n="s3.demo1.label">年处理量（万件）：</label><input type="range" min="10" max="1000" value="100" id="effRange" oninput="updateEffCalc(this.value)"><span id="effRangeVal" data-i18n="s3.demo1.unit">100万件</span></div><div class="demo-area" style="padding:30px;"><div class="eff-calc-grid"><div class="eff-calc-item"><div class="eff-calc-label" data-i18n="s3.calc.trad">传统模式耗时</div><div class="eff-calc-value" id="effTraditional">200,000 小时</div></div><div class="eff-calc-arrow"><i class="fas fa-arrow-right"></i></div><div class="eff-calc-item highlight"><div class="eff-calc-label" data-i18n="s3.calc.ai">AI赋能耗时</div><div class="eff-calc-value" id="effAI">8,333 小时</div></div><div class="eff-calc-item accent"><div class="eff-calc-label" data-i18n="s3.calc.boost">效率提升</div><div class="eff-calc-value" id="effBoost" data-i18n="s3.calc.times">24倍</div></div></div></div><div class="demo-output"><code id="eff-demo-code">年处理100万件任务：传统需200,000小时，AI仅需8,333小时，效率提升24倍</code></div></div></div></div>
+            <div class="tab-panel" data-panel="source"><div class="source-section"><div class="source-intro"><i class="fas fa-info-circle"></i><p data-i18n="source.intro3">效率对比数据来自多家咨询机构的实地调研与案例研究，以及头部企业的公开运营数据披露，具有广泛的行业代表性。</p></div><div class="source-cards-grid"><div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#6BAF8D,#8CC9A8);"><i class="fas fa-chart-line"></i></div><h4>Bloomberg Intelligence</h4><p class="source-org-en" data-i18n="s3.src1.en">生成式AI市场追踪</p><ul class="source-list"><li data-i18n="s3.src1.item1">生成式AI市场规模预测</li><li data-i18n="s3.src1.item2">全球AI投资趋势分析</li></ul></div><div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#6B8DD6,#8BA7E8);"><i class="fas fa-clipboard-check"></i></div><h4>McKinsey & Company</h4><p class="source-org-en" data-i18n="s3.src2.en">AI生产力研究报告</p><ul class="source-list"><li data-i18n="s3.src2.item1">研发周期、质检效率对比</li><li data-i18n="s3.src2.item2">AI对劳动生产率的影响</li></ul></div><div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#E87461,#F09D8F);"><i class="fas fa-industry"></i></div><h4 data-i18n="s3.src3.name">世界经济论坛 (WEF)</h4><p class="source-org-en" data-i18n="s3.src3.en">未来就业报告</p><ul class="source-list"><li data-i18n="s3.src3.item1">供应链预测精度数据</li><li data-i18n="s3.src3.item2">能源效率优化案例</li></ul></div><div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#D4A95A,#E4C47E);"><i class="fas fa-file-contract"></i></div><h4>Stanford HAI</h4><p class="source-org-en">AI Index Report 2025</p><ul class="source-list"><li data-i18n="s3.src4.item1">文档处理效率基准测试</li><li data-i18n="s3.src4.item2">法律AI性能评估数据</li></ul></div></div>
+            <div class="source-table-wrapper"><h4><i class="fas fa-table"></i> <span data-i18n="source.table.title">关键数据引用明细</span></h4><table class="source-table"><thead><tr><th data-i18n="source.th.indicator">数据指标</th><th data-i18n="source.th.value">数值</th><th data-i18n="source.th.source">数据来源</th><th data-i18n="source.th.time">发布时间</th></tr></thead><tbody>
+                <tr><td data-i18n="s3.st1.ind">产品研发周期缩短</td><td>58%</td><td>McKinsey</td><td>2024.12</td></tr>
+                <tr><td data-i18n="s3.st2.ind">AI质检准确率</td><td>99.5%</td><td data-i18n="s3.st2.src">工信部/企业披露</td><td>2025.Q1</td></tr>
+                <tr><td data-i18n="s3.st3.ind">客服响应效率提升</td><td>99%</td><td>McKinsey</td><td>2024.12</td></tr>
+                <tr><td data-i18n="s3.st4.ind">能源利用率提升</td><td>42%</td><td>WEF</td><td>2024.12</td></tr>
+                <tr><td data-i18n="s3.st5.ind">供应链预测精度</td><td>95%</td><td>WEF/Gartner</td><td>2024.12</td></tr>
+                <tr><td data-i18n="s3.st6.ind">文档处理效率倍数</td><td>240x</td><td>Stanford HAI</td><td>2025.Q1</td></tr>
+                <tr><td data-i18n="s3.st7.ind">生成式AI市场（2025）</td><td data-i18n="s3.st7.val">146亿美元</td><td>Bloomberg Intelligence</td><td>2025.Q1</td></tr>
+                <tr><td data-i18n="s3.st8.ind">生成式AI市场（2028E）</td><td data-i18n="s3.st8.val">560亿美元</td><td>Bloomberg Intelligence</td><td>2025.Q1</td></tr>
+            </tbody></table></div><div class="source-note"><i class="fas fa-exclamation-triangle"></i><span data-i18n="source.note3">注：效率提升数据为行业平均水平，具体效果因企业规模、行业特性与AI部署深度而异。所有数据截至2025年第一季度。</span></div></div></div>
+        </div>
+    </section>
+</div>
+
+<!-- ==================== 视图4：全球AI格局 ==================== -->
+<div id="view-global" class="page-view">
+    <section class="module-section section-alt" id="global">
+        <div class="container">
+            <div class="section-header"><div class="section-number">04</div><div class="section-title-group"><h2 class="section-title" data-i18n="s4.title">全球AI竞争格局</h2><p class="section-subtitle" data-i18n="s4.subtitle">中美欧三足鼎立，全球AI市场规模预计2035年达6.56万亿美元</p></div><div class="section-icon" style="--accent:#D4A95A;"><i class="fas fa-globe-asia"></i></div></div>
+            <div class="section-tabs"><button class="tab-btn active" data-tab="concept"><i class="fas fa-lightbulb"></i> <span data-i18n="tab.core">核心数据</span></button><button class="tab-btn" data-tab="viz"><i class="fas fa-chart-pie"></i> <span data-i18n="tab.viz">数据可视化与交互</span></button><button class="tab-btn" data-tab="source"><i class="fas fa-book-open"></i> <span data-i18n="tab.source">数据来源</span></button></div>
+            <div class="tab-panel active" data-panel="concept"><div class="knowledge-card"><div class="knowledge-header"><i class="fas fa-lightbulb"></i><h3 data-i18n="s4.core.title">全球AI格局数据解读</h3></div><div class="knowledge-body"><div class="knowledge-grid">
+                <div class="knowledge-item"><h4><i class="fas fa-dollar-sign"></i> <span data-i18n="s4.k1.title">全球市场规模</span></h4><p data-i18n="s4.k1.desc">2024年全球AI市场规模达<strong>2792亿美元</strong>，预计2030年突破<strong>1.2万亿美元</strong>，2035年将达到<strong>6.56万亿美元</strong>。年复合增长率超过<strong>35%</strong>，是全球增长最快的技术领域。</p></div>
+                <div class="knowledge-item"><h4><i class="fas fa-flag-usa"></i> <span data-i18n="s4.k2.title">北美领先地位</span></h4><p data-i18n="s4.k2.desc">北美占全球AI市场<strong>55%</strong>的份额，拥有全球<strong>60%</strong>的AI独角兽企业。美国AI企业研发投入年均<strong>450亿美元</strong>，OpenAI、Google、Meta引领技术前沿。</p></div>
+                <div class="knowledge-item"><h4><i class="fas fa-flag"></i> <span data-i18n="s4.k3.title">中国快速追赶</span></h4><p data-i18n="s4.k3.desc">中国AI市场占全球<strong>18%</strong>，AI论文发表量全球<strong>第一</strong>，专利申请量全球<strong>第一</strong>。在计算机视觉、自然语言处理等应用领域已形成独特竞争优势。</p></div>
+                <div class="knowledge-item"><h4><i class="fas fa-flag-eu"></i> <span data-i18n="s4.k4.title">欧洲监管创新</span></h4><p data-i18n="s4.k4.desc">欧洲AI市场占全球<strong>20%</strong>，以<strong>AI监管立法</strong>为特色，全球首部《人工智能法案》已生效。在工业AI、医疗AI等垂直领域具有深厚积累。</p></div>
+                <div class="knowledge-item"><h4><i class="fas fa-users-cog"></i> <span data-i18n="s4.k5.title">全球AI人才</span></h4><p data-i18n="s4.k5.desc">全球AI从业者约<strong>200万人</strong>，其中美国<strong>85万</strong>，中国<strong>60万</strong>，欧洲<strong>35万</strong>。全球AI人才缺口超<strong>400万</strong>，顶尖人才竞争日趋白热化。</p></div>
+                <div class="knowledge-item"><h4><i class="fas fa-microchip"></i> <span data-i18n="s4.k6.title">AI芯片格局</span></h4><p data-i18n="s4.k6.desc">NVIDIA占据全球AI训练芯片<strong>90%+</strong>市场份额。中国在AI推理芯片领域加速追赶，华为昇腾、寒武纪等国产芯片在特定场景已实现<strong>对标国际</strong>水平。</p></div>
+            </div></div></div></div>
+            <div class="tab-panel" data-panel="viz"><div class="case-study-card" style="--case-accent:#D4A95A;"><div class="case-header"><div class="case-icon"><i class="fas fa-globe"></i></div><div><h3 data-i18n="s4.viz.title">全球AI市场格局可视化</h3><p data-i18n="s4.viz.subtitle">市场规模预测、区域份额与竞争力对比</p></div></div><div class="case-body"><div class="chart-grid-2"><div class="chart-card-vis" style="flex:1.5;"><h4 class="vis-title" data-i18n="s4.chart1.title">全球AI市场规模预测（亿美元）</h4><div id="chart-global-market" class="echart-box chart-large"></div></div><div class="chart-card-vis"><h4 class="vis-title" data-i18n="s4.chart2.title">区域市场份额</h4><div id="chart-region-share" class="echart-box"></div></div></div><div class="chart-grid-2" style="margin-top:24px;"><div class="chart-card-vis"><h4 class="vis-title" data-i18n="s4.chart3.title">中美AI综合实力对比</h4><div id="chart-china-us" class="echart-box"></div></div><div class="chart-card-vis"><h4 class="vis-title" data-i18n="s4.chart4.title">全球AI人才分布</h4><div id="chart-talent" class="echart-box"></div></div></div></div></div>
+            <div class="demo-section"><div class="demo-header"><i class="fas fa-play-circle"></i><h3 data-i18n="s4.demo.title">全球AI竞争力对比</h3></div><div class="demo-card"><h4 class="demo-title"><span class="demo-badge orange" data-i18n="demo.badgeOrange">演示</span> <span data-i18n="s4.demo1.title">中美欧AI多维度对比雷达</span></h4><div class="demo-area" style="padding:20px;"><div id="chart-global-radar-demo" class="echart-box" style="height:400px;"></div></div></div></div></div>
+            <div class="tab-panel" data-panel="source"><div class="source-section"><div class="source-intro"><i class="fas fa-info-circle"></i><p data-i18n="source.intro4">全球格局数据整合自国际顶级研究机构、行业协会与各国政府的公开统计数据，力求客观呈现全球AI竞争态势。</p></div><div class="source-cards-grid"><div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#D4A95A,#E4C47E);"><i class="fas fa-chart-area"></i></div><h4>Grand View Research</h4><p class="source-org-en" data-i18n="s4.src1.en">全球AI市场追踪</p><ul class="source-list"><li data-i18n="s4.src1.item1">全球AI市场规模与预测</li><li data-i18n="s4.src1.item2">CAGR增长率测算</li></ul></div><div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#6B8DD6,#8BA7E8);"><i class="fas fa-database"></i></div><h4>IDC</h4><p class="source-org-en" data-i18n="s4.src2.en">全球AI支出指南</p><ul class="source-list"><li data-i18n="s4.src2.item1">区域市场份额数据</li><li data-i18n="s4.src2.item2">AI基础设施投资追踪</li></ul></div><div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#6BAF8D,#8CC9A8);"><i class="fas fa-user-graduate"></i></div><h4>LinkedIn / Element AI</h4><p class="source-org-en" data-i18n="s4.src3.en">全球AI人才报告</p><ul class="source-list"><li data-i18n="s4.src3.item1">全球AI从业者分布</li><li data-i18n="s4.src3.item2">人才缺口与流动趋势</li></ul></div><div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#9B7ED8,#B99DE8);"><i class="fas fa-microchip"></i></div><h4>TrendForce</h4><p class="source-org-en" data-i18n="s4.src4.en">AI芯片市场分析</p><ul class="source-list"><li data-i18n="s4.src4.item1">AI训练/推理芯片份额</li><li data-i18n="s4.src4.item2">国产芯片进展追踪</li></ul></div></div>
+            <div class="source-table-wrapper"><h4><i class="fas fa-table"></i> <span data-i18n="source.table.title">关键数据引用明细</span></h4><table class="source-table"><thead><tr><th data-i18n="source.th.indicator">数据指标</th><th data-i18n="source.th.value">数值</th><th data-i18n="source.th.source">数据来源</th><th data-i18n="source.th.time">发布时间</th></tr></thead><tbody>
+                <tr><td data-i18n="s4.st1.ind">全球AI市场（2024）</td><td data-i18n="s4.st1.val">2,792亿美元</td><td>Grand View Research</td><td>2025.Q1</td></tr>
+                <tr><td data-i18n="s4.st2.ind">全球AI市场（2030E）</td><td data-i18n="s4.st2.val">1.2万亿美元</td><td>Grand View Research</td><td>2025.Q1</td></tr>
+                <tr><td data-i18n="s4.st3.ind">全球AI市场（2035E）</td><td data-i18n="s4.st3.val">6.56万亿美元</td><td>Grand View Research</td><td>2025.Q1</td></tr>
+                <tr><td data-i18n="s4.st4.ind">北美市场份额</td><td>55%</td><td>IDC</td><td>2024.12</td></tr>
+                <tr><td data-i18n="s4.st5.ind">中国市场份额</td><td>18%</td><td>IDC</td><td>2024.12</td></tr>
+                <tr><td data-i18n="s4.st6.ind">全球AI从业者</td><td data-i18n="s4.st6.val">200万+人</td><td>LinkedIn/Element AI</td><td>2024.12</td></tr>
+                <tr><td data-i18n="s4.st7.ind">全球AI人才缺口</td><td data-i18n="s4.st7.val">400万+</td><td>LinkedIn/Element AI</td><td>2024.12</td></tr>
+                <tr><td data-i18n="s4.st8.ind">NVIDIA训练芯片份额</td><td>90%+</td><td>TrendForce</td><td>2024.Q4</td></tr>
+                <tr><td data-i18n="s4.st9.ind">中国AI芯片国产化率</td><td>25%</td><td>TrendForce</td><td>2024.Q4</td></tr>
+            </tbody></table></div><div class="source-note"><i class="fas fa-exclamation-triangle"></i><span data-i18n="source.note4">注：全球市场数据因汇率波动与统计方法差异可能存在偏差。预测值基于当前增长趋势外推。所有数据截至2025年第一季度。</span></div></div></div>
+        </div>
+    </section>
+</div>
+
+<!-- ==================== 视图5：未来展望 ==================== -->
+<div id="view-future" class="page-view">
+    <section class="module-section" id="future">
+        <div class="container">
+            <div class="section-header"><div class="section-number">05</div><div class="section-title-group"><h2 class="section-title" data-i18n="s5.title">未来展望与里程碑</h2><p class="section-subtitle" data-i18n="s5.subtitle">从2017到2030，AI新质生产力的发展历程与未来路线图</p></div><div class="section-icon" style="--accent:#9B7ED8;"><i class="fas fa-eye"></i></div></div>
+            <div class="section-tabs"><button class="tab-btn active" data-tab="concept"><i class="fas fa-lightbulb"></i> <span data-i18n="tab.core">核心数据</span></button><button class="tab-btn" data-tab="viz"><i class="fas fa-chart-pie"></i> <span data-i18n="tab.viz">数据可视化与交互</span></button><button class="tab-btn" data-tab="source"><i class="fas fa-book-open"></i> <span data-i18n="tab.source">数据来源</span></button></div>
+            <div class="tab-panel active" data-panel="concept"><div class="knowledge-card"><div class="knowledge-header"><i class="fas fa-lightbulb"></i><h3 data-i18n="s5.core.title">发展里程碑与未来路线图</h3></div><div class="knowledge-body"><div class="timeline-vertical">
+                <div class="tl-item"><div class="tl-year">2017</div><div class="tl-content"><h4 data-i18n="s5.tl1.title">战略规划元年</h4><p data-i18n="s5.tl1.desc">国务院发布《新一代人工智能发展规划》，将AI上升为国家战略</p></div></div>
+                <div class="tl-item"><div class="tl-year">2020</div><div class="tl-content"><h4 data-i18n="s5.tl2.title">新基建加速</h4><p data-i18n="s5.tl2.desc">AI被纳入"新基建"核心领域，算力基础设施建设全面提速</p></div></div>
+                <div class="tl-item"><div class="tl-year">2023</div><div class="tl-content"><h4 data-i18n="s5.tl3.title">大模型爆发</h4><p data-i18n="s5.tl3.desc">生成式AI元年，国产大模型百花齐放，产业应用加速落地</p></div></div>
+                <div class="tl-item"><div class="tl-year">2024</div><div class="tl-content"><h4 data-i18n="s5.tl4.title">产业化深入</h4><p data-i18n="s5.tl4.desc">AI核心产业规模突破9000亿元，"人工智能+"行动全面实施</p></div></div>
+                <div class="tl-item"><div class="tl-year">2025</div><div class="tl-content"><h4 data-i18n="s5.tl5.title">万亿突破</h4><p data-i18n="s5.tl5.desc">核心产业规模突破1.2万亿，人形机器人进工厂，新质生产力全面爆发</p></div></div>
+                <div class="tl-item highlight"><div class="tl-year">2030</div><div class="tl-content"><h4 data-i18n="s5.tl6.title">智能经济时代</h4><p data-i18n="s5.tl6.desc">AI成为经济增长主引擎，对GDP拉动超1个百分点，全面进入智能经济时代</p></div></div>
+            </div></div></div></div>
+            <div class="tab-panel" data-panel="viz"><div class="case-study-card" style="--case-accent:#9B7ED8;"><div class="case-header"><div class="case-icon"><i class="fas fa-map-marked-alt"></i></div><div><h3 data-i18n="s5.viz.title">AI发展路线图可视化</h3><p data-i18n="s5.viz.subtitle">多指标发展轨迹与AI关键能力演进预测</p></div></div><div class="case-body"><div class="chart-grid-2"><div class="chart-card-vis"><h4 class="vis-title" data-i18n="s5.chart1.title">AI新质生产力发展路线图</h4><div id="chart-roadmap" class="echart-box chart-large"></div></div><div class="chart-card-vis"><h4 class="vis-title" data-i18n="s5.chart2.title">AI关键能力演进预期</h4><div id="chart-evolution" class="echart-box chart-large"></div></div></div>
+            <div class="future-vision-grid">
+                <div class="vision-card"><div class="vision-icon">🧠</div><h4 data-i18n="s5.v1.title">通用人工智能</h4><p data-i18n="s5.v1.desc">从专用AI向通用AI迈进，实现跨领域理解与推理</p></div>
+                <div class="vision-card"><div class="vision-icon">🤖</div><h4 data-i18n="s5.v2.title">具身智能</h4><p data-i18n="s5.v2.desc">人形机器人规模化应用，AI从数字世界走向物理世界</p></div>
+                <div class="vision-card"><div class="vision-icon">🌐</div><h4 data-i18n="s5.v3.title">万物智联</h4><p data-i18n="s5.v3.desc">AIoT深度融合，构建全面智能化的生产生活新范式</p></div>
+                <div class="vision-card"><div class="vision-icon">🔬</div><h4 data-i18n="s5.v4.title">科学发现</h4><p data-i18n="s5.v4.desc">AI加速科学研究进程，推动基础科学突破性进展</p></div>
+            </div></div></div>
+            <div class="demo-section"><div class="demo-header"><i class="fas fa-play-circle"></i><h3 data-i18n="s5.demo.title">AI未来情景模拟</h3></div><div class="demo-card"><h4 class="demo-title"><span class="demo-badge purple" data-i18n="demo.badgePurple">演示</span> <span data-i18n="s5.demo1.title">AI能力成长可视化时间轴</span></h4><div class="demo-controls"><label data-i18n="s5.demo1.label">目标年份：</label><div class="btn-group"><button class="demo-btn" onclick="setFutureYear(2023,this)">2023</button><button class="demo-btn active" onclick="setFutureYear(2025,this)">2025</button><button class="demo-btn" onclick="setFutureYear(2027,this)">2027</button><button class="demo-btn" onclick="setFutureYear(2030,this)">2030</button></div></div><div class="demo-area" style="padding:20px;"><div id="chart-future-demo" class="echart-box" style="height:350px;"></div></div><div class="demo-output"><code id="future-demo-code">2025年：感知理解 80分 | 推理决策 55分 | 生成创造 65分 | 自主行动 28分</code></div></div></div></div>
+            <div class="tab-panel" data-panel="source"><div class="source-section"><div class="source-intro"><i class="fas fa-info-circle"></i><p data-i18n="source.intro5">发展历程与未来展望数据综合自国家政策文件、学术研究机构的预测报告以及行业智库的趋势分析，兼具历史准确性与前瞻性。</p></div><div class="source-cards-grid"><div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#9B7ED8,#B99DE8);"><i class="fas fa-landmark"></i></div><h4 data-i18n="s5.src1.name">国务院</h4><p class="source-org-en" data-i18n="s5.src1.en">新一代AI发展规划</p><ul class="source-list"><li data-i18n="s5.src1.item1">2017年战略规划原文</li><li data-i18n="s5.src1.item2">"人工智能+"行动方案</li></ul></div><div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#6B8DD6,#8BA7E8);"><i class="fas fa-university"></i></div><h4 data-i18n="s5.src2.name">中国信通院</h4><p class="source-org-en" data-i18n="s5.src2.en">AI发展趋势白皮书</p><ul class="source-list"><li data-i18n="s5.src2.item1">产业发展路线图</li><li data-i18n="s5.src2.item2">AI能力成熟度评估</li></ul></div><div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#E87461,#F09D8F);"><i class="fas fa-flask"></i></div><h4 data-i18n="s5.src3.name">清华大学 AIR</h4><p class="source-org-en" data-i18n="s5.src3.en">人工智能研究院</p><ul class="source-list"><li data-i18n="s5.src3.item1">AGI技术发展预测</li><li data-i18n="s5.src3.item2">具身智能研究进展</li></ul></div><div class="source-card"><div class="source-card-icon" style="background:linear-gradient(135deg,#6BAF8D,#8CC9A8);"><i class="fas fa-globe"></i></div><h4>OECD</h4><p class="source-org-en">AI Policy Observatory</p><ul class="source-list"><li data-i18n="s5.src4.item1">全球AI治理趋势</li><li data-i18n="s5.src4.item2">AI for Science进展</li></ul></div></div>
+            <div class="source-table-wrapper"><h4><i class="fas fa-table"></i> <span data-i18n="source.table.title">关键数据引用明细</span></h4><table class="source-table"><thead><tr><th data-i18n="source.th.indicator">数据指标</th><th data-i18n="source.th.value">数值/事件</th><th data-i18n="source.th.source">数据来源</th><th data-i18n="source.th.time">时间</th></tr></thead><tbody>
+                <tr><td data-i18n="s5.st1.ind">AI上升为国家战略</td><td data-i18n="s5.st1.val">《新一代AI发展规划》</td><td data-i18n="s5.st1.src">国务院</td><td>2017.07</td></tr>
+                <tr><td data-i18n="s5.st2.ind">AI纳入新基建</td><td data-i18n="s5.st2.val">国家发改委明确范围</td><td data-i18n="s5.st2.src">发改委</td><td>2020.04</td></tr>
+                <tr><td data-i18n="s5.st3.ind">生成式AI元年</td><td data-i18n="s5.st3.val">大模型集中爆发</td><td data-i18n="s5.st3.src">中国信通院</td><td>2023</td></tr>
+                <tr><td data-i18n="s5.st4.ind">AI+行动实施</td><td data-i18n="s5.st4.val">政府工作报告提出</td><td data-i18n="s5.st4.src">国务院</td><td>2024.03</td></tr>
+                <tr><td data-i18n="s5.st5.ind">核心产业破万亿</td><td data-i18n="s5.st5.val">1.2万亿元</td><td data-i18n="s5.st5.src">中国信通院</td><td>2025.Q1</td></tr>
+                <tr><td data-i18n="s5.st6.ind">2030 GDP拉动预期</td><td>1.0 pct</td><td data-i18n="s5.st6.src">中央财经大学</td><td>2024.12</td></tr>
+                <tr><td data-i18n="s5.st7.ind">AI能力演进预测</td><td data-i18n="s5.st7.val">四维能力指数</td><td data-i18n="s5.st7.src">清华AIR/信通院</td><td>2025.Q1</td></tr>
+                <tr><td data-i18n="s5.st8.ind">AGI预期时间窗口</td><td>2030-2035</td><td data-i18n="s5.st8.src">清华AIR/OECD</td><td>2025.Q1</td></tr>
+            </tbody></table></div><div class="source-note"><i class="fas fa-exclamation-triangle"></i><span data-i18n="source.note5">注：未来展望部分包含基于当前趋势的预测与学术界的共识判断，实际发展路径可能受技术突破、政策调整等因素影响。所有数据截至2025年第一季度。</span></div></div></div>
+        </div>
+    </section>
+</div>
+
+<!-- ==================== 页脚 ==================== -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand"><i class="fas fa-brain"></i><span>AI<span data-i18n="logo.accent">·新质生产力</span></span><p data-i18n="footer.desc">人工智能：新质生产力引擎 · 数据可视化展示</p></div>
+            <div class="footer-links">
+                <a href="#" onclick="navigateTo('home');return false;" data-i18n="nav.home">首页</a><a href="#" onclick="navigateTo('industry');return false;" data-i18n="nav.industry">产业规模</a><a href="#" onclick="navigateTo('empower');return false;" data-i18n="nav.empower">行业赋能</a><a href="#" onclick="navigateTo('efficiency');return false;" data-i18n="nav.efficiency">效率革命</a><a href="#" onclick="navigateTo('global');return false;" data-i18n="nav.global">全球格局</a><a href="#" onclick="navigateTo('future');return false;" data-i18n="nav.future">未来展望</a>
+            </div>
+        </div>
+        <div class="footer-bottom"><p data-i18n="footer.copyright">数据来源：中国信通院、工信部、中央财经大学、IDC、McKinsey、Grand View Research &nbsp;|&nbsp; © 2026 AI新质生产力</p></div>
+    </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" title="回到顶部" data-i18n-attr="title:backToTop.title"><i class="fas fa-arrow-up"></i></button>
+
+<script src="js/main.js"></script>
+</body>
+</html>
